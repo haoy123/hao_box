@@ -1,0 +1,33 @@
+export default {
+  namespace: 'geographic',
+
+  state: {
+    province: [],
+    city: [],
+    isLoading: false,
+  },
+
+  effects: {
+  },
+
+  reducers: {
+    setProvince(state, action) {
+      return {
+        ...state,
+        province: action.payload,
+      };
+    },
+    setCity(state, action) {
+      return {
+        ...state,
+        city: action.payload,
+      };
+    },
+    changeLoading(state, action) {
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
+    },
+  },
+};

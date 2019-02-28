@@ -1,0 +1,37 @@
+export default {
+  namespace: 'global',
+
+  state: {
+    collapsed: false,
+
+  },
+
+  effects: {
+  },
+
+  reducers: {
+    changeLayoutCollapsed(state, { payload }) {
+      return {
+        ...state,
+        collapsed: payload,
+      };
+    },
+    setLoadedStatus(state, { payload }) {
+      return {
+        ...state,
+        loadedAllNotices: payload,
+      };
+    },
+  },
+
+  subscriptions: {
+    setup({ history }) {
+      // Subscribe history(url) change, trigger `load` action if pathname is `/`
+      return history.listen(({ pathname, search }) => {
+        if (typeof window.ga !== 'undefined') {
+          window.ga('send', 'pageview', pathname + search);
+        }
+      });
+    },
+  },
+};
